@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SchoolApp</string>
+    <string name="prefLoginState">loginstate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="jenis">
+        <item>Pilih</item>
+        <item>Matematika</item>
+        <item>Bahasa Indonesia</item>
+        <item>Bahasa Inggris</item>
+        <item>IPA</item>
+        <item>PKN</item>
+        <item>IPS</item>
+    </string-array>
+    <string name="contoh">Jumlah kasus infeksi virus corona di Indonesia kian meningkat. Bertambahnya jumlah kasus ini membuat angka infeksi Covid-19 di Indonesia menembus angka 1 juta. Sudah seharusnya kita lebih patuh terhadap protokol kesehatan yang telah ditentukan Pemerintah Indonesia. Protokol kesehatan ini ditujukan untuk mencegah penularan virus corona dan meminimalisir bertambahnya angka kasus infeksi</string>
+</resources>

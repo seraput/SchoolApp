@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.siswa.aktivitas.extend.SiswaTugasSelesai">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/alert_greet"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yeay, Selamat"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/archivo_narrow_bold"
+            android:layout_gravity="center"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Kamu"
+            android:id="@+id/txt_nama"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/archivo_narrow_bold"
+            android:textColor="@color/blue"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Satu Tugas Sudah Selesai"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/archivo_narrow_bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dan Data Sudah Tersimpan."
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:fontFamily="@font/archivo_narrow_bold"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="16sp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FB8C00"
+            android:layout_marginTop="20sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/card_selesai">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selesai"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/archivo_narrow_bold"
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tanggal"
+        android:visibility="gone"
+        android:id="@+id/txt_tgl"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jam"
+        android:visibility="gone"
+        android:layout_marginTop="20sp"
+        android:id="@+id/txt_jam"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="benar"
+        android:layout_marginTop="20sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/txt_benar"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="salah"
+        android:layout_marginTop="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/txt_salah"/>
+
+</RelativeLayout>

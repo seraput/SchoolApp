@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".testing.DateRangeActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        android:id="@+id/top">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buat Tugas"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tgl"
+            android:visibility="gone"
+            android:id="@+id/txtTgl"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginLeft="30dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:id="@+id/imgSimpan"
+                android:src="@drawable/ic_saved"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_max="350dp"
+        app:layout_constrainedHeight="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/top"
+        android:id="@+id/lincard">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/top"
+                    android:id="@+id/card1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Data Tugas"
+                                android:textSize="16sp"
+                                android:textColor="@color/blue"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:onClick="arrTop"
+                                    android:visibility="gone"
+                                    android:id="@+id/arrTop"
+                                    android:src="@drawable/ic_arrow_up"/>
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:id="@+id/arrBot"
+                                    android:onClick="arrBot"
+                                    android:src="@drawable/ic_arrow_down"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="highlight"
+                            android:hint="ID Tugas"
+                            android:visibility="gone"
+                            android:enabled="false"
+                            android:textColorHint="@color/blue"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/tugas_id"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="highlight"
+                            android:hint="Modul"
+                            android:visibility="gone"
+                            android:textColorHint="@color/blue"
+                            android:id="@+id/tugas_modul"
+                            android:inputType="text"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="highlight"
+                            android:hint="Mata Pelajaran"
+                            android:visibility="gone"
+                            android:id="@+id/tugas_mapel"
+                            android:textColorHint="@color/blue"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/lintgl"
+                            android:visibility="gone">
+
+                            <com.rengwuxian.materialedittext.MaterialEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:met_floatingLabel="highlight"
+                                android:hint="Tanggal Tugas"
+                                android:enabled="false"
+                                android:id="@+id/tugas_expired"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"/>
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_date_blue"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:id="@+id/img_select"
+                                android:layout_marginRight="10dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/card1"
+                    android:id="@+id/card2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Detail Soal"
+                                android:textSize="16sp"
+                                android:textColor="@color/blue"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"/>
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:onClick="arrTop1"
+                                    android:visibility="gone"
+                                    android:id="@+id/arrTop1"
+                                    android:src="@drawable/ic_arrow_up"/>
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:id="@+id/arrBot1"
+                                    android:onClick="arrBot1"
+                                    android:src="@drawable/ic_arrow_down"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Pertanyaan"
+                            android:id="@+id/tugas_pertanyaan"
+                            android:visibility="gone"
+                            android:maxLines="5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Pilihan A"
+                            android:id="@+id/tugas_pilihA"
+                            android:visibility="gone"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Pilihan B"
+                            android:visibility="gone"
+                            android:id="@+id/tugas_pilihB"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Pilihan C"
+                            android:visibility="gone"
+                            android:id="@+id/tugas_pilihC"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Pilihan D"
+                            android:visibility="gone"
+                            android:id="@+id/tugas_pilihD"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:met_floatingLabel="normal"
+                            android:hint="Jawaban Benar"
+                            android:id="@+id/tugas_jawaban"
+                            android:visibility="gone"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+                        <Button
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Simpan"
+                            android:visibility="gone"
+                            android:onClick="SimpanSoal"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/tugas_simpan"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List Pertanyaan"
+        android:textColor="@color/black"
+        android:fontFamily="@font/archivo_narrow_bold"
+        android:textSize="14sp"
+        android:id="@+id/txt_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/lincard"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_title"
+        android:id="@+id/list_soal"/>
+
+</RelativeLayout>

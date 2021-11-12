@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974386256175",
+    "project_id": "fcm-school",
+    "storage_bucket": "fcm-school.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974386256175:android:3b01cc5fec43bbb8c469da",
+        "android_client_info": {
+          "package_name": "com.example.schoolapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974386256175-mi6e0rp6v26roqkq07u080mma153l2jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwAN6RZ95IW7DCasEIA64NzE_8xi8UT2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974386256175-mi6e0rp6v26roqkq07u080mma153l2jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
