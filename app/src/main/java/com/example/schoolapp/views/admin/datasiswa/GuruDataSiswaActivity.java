@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -50,7 +51,7 @@ public class GuruDataSiswaActivity extends AppCompatActivity {
     DataSiswaModels dataSiswaModels;
     private ListView listSiswa;
     ProgressBar progressBar;
-    ImageView imgAdd;
+    CardView cardAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,18 +60,19 @@ public class GuruDataSiswaActivity extends AppCompatActivity {
 
         listSiswa = findViewById(R.id.list_siswa);
         progressBar = findViewById(R.id.progress);
+        cardAdd = findViewById(R.id.tambah_siswa);
 //        imgAdd = findViewById(R.id.img_add);
 
         adapterDataSiswa = new AdapterDataSiswa(GuruDataSiswaActivity.this, dataSiswaModelsArrayList);
         listSiswa.setAdapter(adapterDataSiswa);
         receiveData();
-//
-//        imgAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(GuruDataSiswaActivity.this, GuruHomeActivity.class));
-//            }
-//        });
+
+        cardAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GuruDataSiswaActivity.this, TambahSiswaActivity.class));
+            }
+        });
 
         listSiswa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

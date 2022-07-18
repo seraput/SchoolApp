@@ -16,7 +16,8 @@
         android:theme="@style/Theme.SchoolApp"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".views.admin.rekap.GuruRekapDetailActivity"></activity>
+        <activity android:name=".views.admin.datasiswa.TambahSiswaActivity"></activity>
+        <activity android:name=".views.admin.rekap.GuruRekapDetailActivity" />
         <activity android:name=".views.admin.datasiswa.GuruDataSiswaDetail" />
         <activity android:name=".views.admin.absensi.GuruAbsensiDetailActivity" />
         <activity android:name=".views.admin.informasi.AddInformasiGuru" />

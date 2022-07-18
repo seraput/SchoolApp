@@ -47,4 +47,27 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/progress"/>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="90dp"
+        app:cardElevation="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20sp"
+        android:layout_marginBottom="20sp"
+        android:id="@+id/tambah_siswa"
+        android:backgroundTint="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

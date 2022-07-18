@@ -16,19 +16,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.schoolapp.R;
-import com.example.schoolapp.adapter.admin.AdapterDataSiswa;
-import com.example.schoolapp.adapter.admin.AdapterRekap;
 import com.example.schoolapp.helper.Server;
 import com.example.schoolapp.models.admin.DataRekapModels;
-import com.example.schoolapp.models.admin.DataSiswaModels;
-import com.example.schoolapp.models.siswa.TerkirimModels;
-import com.example.schoolapp.views.admin.GuruHomeActivity;
-import com.example.schoolapp.views.admin.datasiswa.GuruDataSiswaActivity;
-import com.example.schoolapp.views.admin.koreksi.GuruKoreksiActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONArray;
@@ -42,18 +34,16 @@ import java.util.Map;
 public class GuruRekapDetailActivity extends AppCompatActivity {
 
     int position;
-    int position1;
     MaterialEditText meNis, meNama, meKelas;
     private String getTugas = Server.URL_API + "rekapnilai/getrekapnilai.php";
     private String getDetail = Server.URL_API + "rekapnilai/getlistrekap.php";
     ArrayList<HashMap<String, String>> list_data;
-    TextView tvMapel, tvTugas, tvNilai, tvTest;
+    TextView tvMapel, tvTugas, tvNilai;
     ProgressBar progressBar;
     public static ArrayList<DataRekapModels> dataRekapModelsArrayList = new ArrayList<>();
     DataRekapModels dataRekapModels;
     LinearLayout clickDetail;
     ListView maList;
-    AdapterRekap adapterRekap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +57,7 @@ public class GuruRekapDetailActivity extends AppCompatActivity {
         tvTugas = findViewById(R.id.nilai_tugas);
         tvNilai = findViewById(R.id.nilai_rata);
         clickDetail = findViewById(R.id.detail);
-        tvTest = findViewById(R.id.test);
-//        maList = findViewById(R.id.listDetail);
+        maList = findViewById(R.id.list_detail);
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
@@ -78,17 +67,12 @@ public class GuruRekapDetailActivity extends AppCompatActivity {
 
         list_data = new ArrayList<HashMap<String, String>>();
         getCount();
+        getRekap();
 
         clickDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                for(int i = 0; i < dataRekapModelsArrayList.size(); i++){
-                    tvTest.setText(dataRekapModelsArrayList.get(position1).getMapel());
-//                    tvTest.append(dataRekapModelsArrayList.get(i).toString());
-                }
-//                adapterRekap = new AdapterRekap(GuruRekapDetailActivity.this, dataRekapModelsArrayList);
-//                maList.setAdapter(adapterRekap);
             }
         });
     }
@@ -113,8 +97,6 @@ public class GuruRekapDetailActivity extends AppCompatActivity {
                                 tvNilai.setText(list_data.get(0).get("nilai"));
                                 tvTugas.setText(list_data.get(0).get("tugas"));
                                 tvMapel.setText(list_data.get(0).get("mapel"));
-
-                                getRekap();
 
                             }
                         } catch (JSONException e) {

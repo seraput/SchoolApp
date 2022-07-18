@@ -1,65 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <TableRow android:background="@color/blue" android:padding="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tanggal"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tugas ID"
-            android:textColor="@color/white" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Pelajaran"
-            android:textColor="@color/white" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nilai"
-            android:textColor="@color/white"/>
-    </TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
-    <TableRow android:background="#DAE8FC" android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="0"
             android:layout_weight="1"
-            android:text="2022-01-01"
-            android:id="@+id/tab_tanggal"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="20220101"
-            android:id="@+id/tab_tugas"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Matematika"
-            android:id="@+id/tab_mapel"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="100"
-            android:id="@+id/tab_nilai"/>
-    </TableRow>
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:id="@+id/det_tanggal"/>
 
-</TableLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:id="@+id/det_tugas"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:id="@+id/det_pelajaran"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:id="@+id/det_nilai"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
