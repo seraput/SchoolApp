@@ -56,7 +56,7 @@ public class SiswaHistoryDikoreksiFragment extends Fragment {
     SharedPreferences sharedPreferences;
     ProgressBar progressBar;
     String getNis;
-    private String getKoreksi = Server.URL_API + "get_jawaban_dikoreksi.php";
+    private String getKoreksi = Server.URL_API + "koreksi/get_jawaban_dikoreksi.php";
 
     public SiswaHistoryDikoreksiFragment() {
         // Required empty public constructor

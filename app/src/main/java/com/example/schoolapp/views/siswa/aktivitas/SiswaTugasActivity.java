@@ -45,8 +45,8 @@ public class SiswaTugasActivity extends AppCompatActivity {
 
     private long backPressedTime;
     private Toast backToast;
-    private String getTugas = Server.URL_API + "get_tugas.php";
-    private String cekTugas = Server.URL_API + "cek_tugas.php";
+    private String getTugas = Server.URL_API + "koreksi/get_tugas.php";
+    private String cekTugas = Server.URL_API + "tugas/cek_tugas.php";
     AdapterListTugas adapterListTugas;
     public static ArrayList<TugasModels> tugasModelsArrayList = new ArrayList<>();
     TugasModels tugasModels;
@@ -185,7 +185,7 @@ public class SiswaTugasActivity extends AppCompatActivity {
     }
 
     public void getData(){
-        final String txtstat = "Y";
+        final String txtstat = "Active";
         progressBar.setVisibility(View.VISIBLE);
         StringRequest request = new StringRequest(Request.Method.POST, getTugas,
                 new Response.Listener<String>() {

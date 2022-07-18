@@ -14,12 +14,14 @@ import androidx.annotation.Nullable;
 import com.example.schoolapp.R;
 import com.example.schoolapp.models.siswa.InformationModels;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class AdapterListInformasi extends ArrayAdapter<InformationModels> {
 
     Context context;
     List<InformationModels> arrayListInformasi;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
 
     public AdapterListInformasi(@NonNull Context context, List<InformationModels> arrayListInformasi) {
         super(context, R.layout.cust_list_informasi, arrayListInformasi);
@@ -41,7 +43,7 @@ public class AdapterListInformasi extends ArrayAdapter<InformationModels> {
         tvTitle.setText(arrayListInformasi.get(position).getJudul());
         tvTanggal.setText(arrayListInformasi.get(position).getTanggal());
         tvPenting.setText(arrayListInformasi.get(position).getPenting());
-        final String txt = tvPenting.getText().toString();
+        final String txt = arrayListInformasi.get(position).getStatus();
         if (txt.equals("N")){
             imgAlert.setVisibility(View.GONE);
         }

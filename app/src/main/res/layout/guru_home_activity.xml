@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
     tools:context=".views.admin.GuruHomeActivity">
 
 
@@ -43,8 +42,8 @@
             android:layout_below="@+id/tvGreet"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/archivo_narrow_bold"
-            android:text="Septian Rachmat"
-            android:textColor="@color/white"
+            android:text="Septian"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
 
@@ -67,7 +66,7 @@
             android:layout_margin="5dp"
             android:fontFamily="@font/archivo_narrow_bold"
             android:text="Dashboard"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -90,7 +89,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/yellow"
+            app:cardBackgroundColor="@color/blue"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
@@ -125,9 +124,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/archivo_narrow_bold"
-                        android:text="100"
+                        android:text="0"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="20dp"
+                        android:id="@+id/total_siswa"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -160,14 +160,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_tugas_aktif" />
+                    android:src="@drawable/ic_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/archivo_narrow_bold"
-                    android:text="Total Aktif"
+                    android:text="Informasi"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
@@ -181,7 +181,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/archivo_narrow_bold"
-                        android:text="100"
+                        android:text="0"
+                        android:id="@+id/txtinfo"
                         android:textColor="@color/white"
                         android:textSize="20dp" />
 
@@ -237,7 +238,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/archivo_narrow_bold"
-                        android:text="100"
+                        android:text="0"
+                        android:id="@+id/txttugas"
                         android:textColor="@color/white"
                         android:textSize="20dp" />
 
@@ -276,7 +278,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/archivo_narrow_bold"
                 android:text="Menu Utama"
-                android:textColor="@color/white"
+                android:textColor="@color/grey"
                 android:textSize="16sp" />
 
             <View

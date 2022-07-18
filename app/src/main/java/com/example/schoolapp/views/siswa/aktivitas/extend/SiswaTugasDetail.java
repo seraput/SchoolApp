@@ -42,7 +42,7 @@ public class SiswaTugasDetail extends AppCompatActivity {
     CardView jawabA, jawabB, jawabC, jawabD;
     TextView tvA, tvB, tvC, tvD, tvSoal, tvIdTugas, tvMapel, tvModul, tvIdSiswa, tvJam;
     List<SoalModels> questionItems = new ArrayList<>();
-    private String GETDATA = Server.URL_API + "get_soal.php";
+    private String GETDATA = Server.URL_API + "tugas/get_soal.php";
     private int questionNumber = 0;
     private int correct=0, wrong=0;
     SessionManager sessionManager;

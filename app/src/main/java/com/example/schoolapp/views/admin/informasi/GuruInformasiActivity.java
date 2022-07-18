@@ -44,8 +44,8 @@ public class GuruInformasiActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private long backPressedTime;
     private Toast backToast;
-    private String getData = Server.URL_API + "get_informasi.php";
-    private String HapusInfo = Server.URL_API + "nonaktifinfo.php";
+    private String getData = Server.URL_API + "informasi/get_informasi.php";
+    private String HapusInfo = Server.URL_API + "informasi/nonaktifinfo.php";
     AdapterListInformasi adapterListInformasi;
     public static ArrayList<InformationModels> informationModelsArrayList = new ArrayList<>();
     InformationModels informationModels;
@@ -69,7 +69,7 @@ public class GuruInformasiActivity extends AppCompatActivity {
         imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                startActivity(new Intent(GuruInformasiActivity.this, AddInformasiGuru.class));
             }
         });
 
@@ -167,12 +167,13 @@ public class GuruInformasiActivity extends AppCompatActivity {
                                     String penting = object.getString("penting");
                                     String created = object.getString("created");
                                     String tanggal = object.getString("tanggal");
+                                    String status = object.getString("status");
 
                                     if (jsonArray.length() < 1) {
                                         progressBar.setVisibility(View.GONE);
                                         Toast.makeText(GuruInformasiActivity.this, "Belum Ada Data!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        informationModels = new InformationModels(id, judul, ucapan, isi, penutup, penting, created, tanggal);
+                                        informationModels = new InformationModels(id, judul, ucapan, isi, penutup, penting, created, tanggal, status);
                                         informationModelsArrayList.add(informationModels);
                                         adapterListInformasi.notifyDataSetChanged();
                                         progressBar.setVisibility(View.GONE);

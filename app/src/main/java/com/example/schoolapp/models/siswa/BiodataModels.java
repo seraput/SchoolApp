@@ -1,21 +1,48 @@
 package com.example.schoolapp.models.siswa;
 
 public class BiodataModels {
-    private String kelas, agama, kelamin, tgl_lahir, alamat, telp, foto, absen;
+    private String nis, nama, username, kelas, agama, kelamin, tanggal, alamat, telp, foto, absen;
 
     public BiodataModels(){
 
     }
 
-    public BiodataModels(String kelas, String agama, String kelamin, String tgl_lahir, String alamat, String telp, String foto, String absen) {
+    public BiodataModels(String nis, String nama, String username, String kelas, String agama, String kelamin, String tanggal, String alamat, String telp, String foto, String absen) {
+        this.nis = nis;
+        this.nama = nama;
+        this.username = username;
         this.kelas = kelas;
         this.agama = agama;
         this.kelamin = kelamin;
-        this.tgl_lahir = tgl_lahir;
+        this.tanggal = tanggal;
         this.alamat = alamat;
         this.telp = telp;
         this.foto = foto;
         this.absen = absen;
+    }
+
+    public String getNis() {
+        return nis;
+    }
+
+    public void setNis(String nis) {
+        this.nis = nis;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getKelas() {
@@ -42,12 +69,12 @@ public class BiodataModels {
         this.kelamin = kelamin;
     }
 
-    public String getTgl_lahir() {
-        return tgl_lahir;
+    public String getTanggal() {
+        return tanggal;
     }
 
-    public void setTgl_lahir(String tgl_lahir) {
-        this.tgl_lahir = tgl_lahir;
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
     public String getAlamat() {

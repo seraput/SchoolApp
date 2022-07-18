@@ -6,11 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".views.admin.rekap.GuruRekapActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        android:id="@+id/top">
 
-    <ImageView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rekap Nilai"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/maintenance"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:layout_below="@+id/top"/>
+
+    <ListView
+        android:id="@+id/list_siswa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/progress"/>
 
 </RelativeLayout>

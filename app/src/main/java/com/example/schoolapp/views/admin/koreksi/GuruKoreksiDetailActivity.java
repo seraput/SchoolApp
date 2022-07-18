@@ -47,8 +47,8 @@ public class GuruKoreksiDetailActivity extends AppCompatActivity {
     int position;
     TextView tvIDtugas, tvJenis, tvMapel, tvModul, tvIDsiswa, tvNamaSiswa, tvTgl, tvBenar, tvSalah;
     MaterialEditText meNilai, meToken, meTitle, meBody;
-    private String koreksi = Server.URL_API + "koreksi_nilai.php";
-    private String getToken = Server.URL_API + "get_token.php";
+    private String koreksi = Server.URL_API + "koreksi/koreksi_nilai.php";
+    private String getToken = Server.URL_API + "koreksi/get_token.php";
     String usertoken;
     String duptok = "";
     public static ArrayList<TokenModels> tokenModelsArrayList = new ArrayList<>();

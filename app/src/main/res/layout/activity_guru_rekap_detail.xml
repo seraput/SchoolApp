@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.admin.rekap.GuruRekapDetailActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        android:id="@+id/top">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="Detail Rekap Nilai"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_margin="20sp"
+                android:id="@+id/card1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Murid"
+                        android:textSize="18sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="normal"
+                        android:hint="NIS"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/nisSiswa"
+                        android:enabled="false"/>
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="normal"
+                        android:hint="Nama Lengkap"
+                        android:id="@+id/namaSiswa"
+                        android:enabled="false"/>
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="normal"
+                        android:hint="Kelas"
+                        android:id="@+id/kelasSiswa"
+                        android:enabled="false"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/card1"
+                android:id="@+id/card2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rekap Nilai"
+                        android:textSize="18sp"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            app:cardElevation="8dp"
+                            app:cardCornerRadius="90dp"
+                            android:layout_margin="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pelajaran"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="12sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nilai"
+                                    android:id="@+id/nilai_mapel"
+                                    android:layout_marginTop="10dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/blue"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="20dp"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            app:cardElevation="8dp"
+                            app:cardCornerRadius="90dp"
+                            android:layout_margin="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tugas"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="12sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nilai"
+                                    android:id="@+id/nilai_tugas"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/blue"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="20sp"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            app:cardElevation="8dp"
+                            app:cardCornerRadius="90dp"
+                            android:layout_margin="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nilai"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="12sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nilai"
+                                    android:id="@+id/nilai_rata"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/blue"
+                                    android:fontFamily="sans-serif"
+                                    android:textSize="20sp"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/card2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/detail">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrdown"
+                    android:id="@+id/img1"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat Detail"
+                    android:textSize="14sp"
+                    android:textColor="@color/blue"
+                    android:id="@+id/tv1"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/test"
+                android:text="test"
+                android:layout_below="@+id/detail"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -39,11 +39,12 @@ public class GuruKoreksiActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ListView listView;
     ImageView imgCek;
-    private String getTerkirim= Server.URL_API + "get_jawaban_terkirim_guru.php";
+    private String getTerkirim= Server.URL_API + "koreksi/get_jawaban_dikoreksi_guru.php";
     AdapterListTerkirimGuru adapterListTerkirimGuru;
     public static ArrayList<TerkirimModels> terkirimModelsArrayList = new ArrayList<>();
     TerkirimModels terkirimModels;
     TextView tvMessage;
+    String txt = "Belum ada Data";
     SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
@@ -118,16 +119,24 @@ public class GuruKoreksiActivity extends AppCompatActivity {
                                     String nilai = object.getString("nilai");
                                     String dikoreksi = object.getString("dikoreksi");
 
-                                    if (jsonArray.length() > 0) {terkirimModels = new TerkirimModels(id_tugas, mapel, modul, jenis, id_siswa, nama, benar, salah, tanggal, jam, nilai, dikoreksi);
+                                    if (jsonArray.length() < 1){
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                    else {
+                                        terkirimModels = new TerkirimModels(id_tugas, mapel, modul, jenis, id_siswa, nama, benar, salah, tanggal, jam, nilai, dikoreksi);
                                         terkirimModelsArrayList.add(terkirimModels);
                                         adapterListTerkirimGuru.notifyDataSetChanged();
                                         progressBar.setVisibility(View.GONE);
                                         tvMessage.setVisibility(View.GONE);
-//                                        Toast.makeText(GuruKoreksiActivity.this, "Belum Ada Data...", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        progressBar.setVisibility(View.GONE);
-                                        Toast.makeText(GuruKoreksiActivity.this, "Belum Ada Data...", Toast.LENGTH_SHORT).show();
                                     }
+
+//                                    if (jsonArray.length() != 0) {
+//
+////                                        Toast.makeText(GuruKoreksiActivity.this, "Belum Ada Data...", Toast.LENGTH_SHORT).show();
+//                                    } else {
+//
+////                                        Toast.makeText(GuruKoreksiActivity.this, "Belum Ada Data...", Toast.LENGTH_SHORT).show();
+//                                    }
                                 }
                             }
                         }

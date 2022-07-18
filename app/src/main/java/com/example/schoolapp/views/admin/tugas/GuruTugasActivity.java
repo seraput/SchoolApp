@@ -21,8 +21,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.schoolapp.R;
+import com.example.schoolapp.adapter.admin.AdapterListTugasGuru;
 import com.example.schoolapp.adapter.siswa.AdapterListTugas;
 import com.example.schoolapp.helper.Server;
+import com.example.schoolapp.models.admin.TugasGuruModels;
 import com.example.schoolapp.models.siswa.TugasModels;
 import com.example.schoolapp.views.admin.GuruHomeActivity;
 import com.example.schoolapp.views.admin.informasi.GuruDetailInformasi;
@@ -40,11 +42,11 @@ public class GuruTugasActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     ListView listView;
-    private String getTugas = Server.URL_API + "get_tugas.php";
-    private String HapusTugas = Server.URL_API + "nonaktiftugas.php";
-    AdapterListTugas adapterListTugas;
-    public static ArrayList<TugasModels> tugasModelsArrayList = new ArrayList<>();
-    TugasModels tugasModels;
+    private String getTugas = Server.URL_API + "koreksi/get_tugas_guru.php";
+    private String HapusTugas = Server.URL_API + "tugas/nonaktiftugas.php";
+    AdapterListTugasGuru adapterListTugasGuru;
+    public static ArrayList<TugasGuruModels> tugasModelsArrayList = new ArrayList<>();
+    TugasGuruModels tugasModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,76 +56,82 @@ public class GuruTugasActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress);
         listView = findViewById(R.id.list_tugas);
 
-        adapterListTugas = new AdapterListTugas(getApplicationContext(), tugasModelsArrayList);
-        listView.setAdapter(adapterListTugas);
+        adapterListTugasGuru = new AdapterListTugasGuru(getApplicationContext(), tugasModelsArrayList);
+        listView.setAdapter(adapterListTugasGuru);
         getData();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                CharSequence[] dialogItem = {"Hapus"};
-                builder.setTitle(tugasModelsArrayList.get(position).getPelajaran());
 
-                builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface di, int i) {
-                        switch (i) {
-                            case 0:
-                                final String id = tugasModelsArrayList.get(position).getId();
-                                final ProgressDialog progressDialog = new ProgressDialog(GuruTugasActivity.this);
-                                progressDialog.setMessage("Tunggu Sebentar...");
-                                progressDialog.show();
+                String list = tugasModelsArrayList.get(position).getStatus();
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.POST, HapusTugas,
-                                        new Response.Listener<String>() {
-                                            @Override
-                                            public void onResponse(String response) {
-                                                progressDialog.dismiss();
-                                                try {
-                                                    JSONObject jsonObject = new JSONObject(response);
-                                                    String success = jsonObject.getString("success");
+                if (list.equals("Active")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    CharSequence[] dialogItem = {"Hapus"};
+                    builder.setTitle(tugasModelsArrayList.get(position).getPelajaran());
 
-                                                    if (success.equals("1")){
-                                                        getData();
-                                                        Toast.makeText(GuruTugasActivity.this, "Berhasil..", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                } catch (JSONException e) {
+                    builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface di, int i) {
+                            switch (i) {
+                                case 0:
+                                    final String id = tugasModelsArrayList.get(position).getId();
+                                    final ProgressDialog progressDialog = new ProgressDialog(GuruTugasActivity.this);
+                                    progressDialog.setMessage("Tunggu Sebentar...");
+                                    progressDialog.show();
+
+                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, HapusTugas,
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
                                                     progressDialog.dismiss();
-                                                    Toast.makeText(GuruTugasActivity.this, "Internet Terputus ...", Toast.LENGTH_SHORT).show();
+                                                    try {
+                                                        JSONObject jsonObject = new JSONObject(response);
+                                                        String success = jsonObject.getString("success");
+
+                                                        if (success.equals("1")) {
+                                                            getData();
+                                                            Toast.makeText(GuruTugasActivity.this, "Berhasil..", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } catch (JSONException e) {
+                                                        progressDialog.dismiss();
+                                                        Toast.makeText(GuruTugasActivity.this, "Internet Terputus ...", Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }
-                                            }
-                                        },
-                                        new Response.ErrorListener() {
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {
-                                                System.out.println(error.toString());
-                                                progressDialog.dismiss();
-                                                Toast.makeText(GuruTugasActivity.this, "Error Server", Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                {
-                                    @Override
-                                    protected Map<String, String> getParams() throws AuthFailureError {
-                                        Map<String, String> params = new HashMap<>();
-                                        params.put("id", id);
-                                        return params;
-                                    }
-                                };
-                                RequestQueue requestQueue = Volley.newRequestQueue(GuruTugasActivity.this);
-                                requestQueue.add(stringRequest);
-                                break;
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    System.out.println(error.toString());
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(GuruTugasActivity.this, "Error Server", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }) {
+                                        @Override
+                                        protected Map<String, String> getParams() throws AuthFailureError {
+                                            Map<String, String> params = new HashMap<>();
+                                            params.put("id", id);
+                                            return params;
+                                        }
+                                    };
+                                    RequestQueue requestQueue = Volley.newRequestQueue(GuruTugasActivity.this);
+                                    requestQueue.add(stringRequest);
+                                    break;
+                            }
                         }
-                    }
-                });
-                builder.create().show();
+                    });
+                    builder.create().show();
+                } else {
+                    Toast.makeText(GuruTugasActivity.this, "Expired Date", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
 
 
     public void getData(){
-        final String txtstat = "Y";
         progressBar.setVisibility(View.VISIBLE);
         StringRequest request = new StringRequest(Request.Method.POST, getTugas,
                 new Response.Listener<String>() {
@@ -148,14 +156,15 @@ public class GuruTugasActivity extends AppCompatActivity {
                                     String guru_id = object.getString("guru_id");
                                     String guru_nama = object.getString("guru_nama");
                                     String jenis = object.getString("jenis");
+                                    String status = object.getString("status");
 
                                     if (jsonArray.length() < 1) {
                                         progressBar.setVisibility(View.GONE);
                                         Toast.makeText(GuruTugasActivity.this, "Belum Ada Tugas!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        tugasModels = new TugasModels(id, pelajaran, modul, tanggal, expired, guru_id, guru_nama, jenis);
+                                        tugasModels = new TugasGuruModels(id, pelajaran, modul, tanggal, expired, guru_id, guru_nama, jenis, status);
                                         tugasModelsArrayList.add(tugasModels);
-                                        adapterListTugas.notifyDataSetChanged();
+                                        adapterListTugasGuru.notifyDataSetChanged();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
@@ -179,7 +188,6 @@ public class GuruTugasActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("status", txtstat);
 //                params.put("status", status);
                 return params;
             }

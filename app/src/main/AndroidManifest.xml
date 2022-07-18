@@ -14,8 +14,13 @@
         android:roundIcon="@mipmap/ic_app_circle"
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolApp"
+        android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".views.admin.koreksi.GuruSudahKoreksiDetail"></activity>
+        <activity android:name=".views.admin.rekap.GuruRekapDetailActivity"></activity>
+        <activity android:name=".views.admin.datasiswa.GuruDataSiswaDetail" />
+        <activity android:name=".views.admin.absensi.GuruAbsensiDetailActivity" />
+        <activity android:name=".views.admin.informasi.AddInformasiGuru" />
+        <activity android:name=".views.admin.koreksi.GuruSudahKoreksiDetail" />
         <activity android:name=".testing.DateRangeActivity" />
         <activity android:name=".views.admin.koreksi.GuruSudahKoreksiActivity" />
         <activity android:name=".views.admin.koreksi.GuruKoreksiDetailActivity" />

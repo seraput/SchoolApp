@@ -47,8 +47,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Belum Ada Data Masuk!"
-        android:textSize="18sp"
+        android:text="Data Kosong!"
+        android:textSize="14sp"
         android:textColor="@color/blue"
         android:fontFamily="@font/open_sans"
         android:id="@+id/txtMessage"

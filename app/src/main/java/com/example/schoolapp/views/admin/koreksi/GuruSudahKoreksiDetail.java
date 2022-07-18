@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,7 +38,8 @@ public class GuruSudahKoreksiDetail extends AppCompatActivity {
 
     ProgressBar progressBar;
     ListView listView;
-    private String getTerkirim= Server.URL_API + "get_jawaban_dikoreksi_guru.php";
+    TextView tvMapel, tvTanggal;
+    private String getTerkirim= Server.URL_API + "koreksi/get_jawaban_dikoreksi_detail.php";
     AdapterKoreksiGroupDetail adapterKoreksiGroupDetail;
     public static ArrayList<KoreksiGroupDetailModels> koreksiGroupDetailModelsArrayList = new ArrayList<>();
     KoreksiGroupDetailModels koreksiGroupDetailModels;
@@ -51,6 +53,8 @@ public class GuruSudahKoreksiDetail extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progress);
         listView = findViewById(R.id.list_sudah_koreksi_detail);
+        tvMapel = findViewById(R.id.mapel_detail);
+        tvTanggal = findViewById(R.id.tgl_detail);
 
         adapterKoreksiGroupDetail = new AdapterKoreksiGroupDetail(getApplicationContext(), koreksiGroupDetailModelsArrayList);
         listView.setAdapter(adapterKoreksiGroupDetail);
@@ -58,10 +62,19 @@ public class GuruSudahKoreksiDetail extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
         GetID = GuruSudahKoreksiActivity.koreksiGroupModelsArrayListk.get(position).getId_tugas();
+        tvMapel.setText(GuruSudahKoreksiActivity.koreksiGroupModelsArrayListk.get(position).getMapel());
+        tvTanggal.setText(GuruSudahKoreksiActivity.koreksiGroupModelsArrayListk.get(position).getTanggal());
 
 //        tvIDtugas.setText(GuruKoreksiActivity.terkirimModelsArrayList.get(position).getId_tugas());
-        getData();
+//        getData();
 
+//        Toast.makeText(this, "ID"+GetID, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getData();
     }
 
     public void back(View view) {

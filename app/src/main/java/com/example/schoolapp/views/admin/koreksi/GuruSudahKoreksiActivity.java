@@ -36,7 +36,7 @@ import java.util.Map;
 public class GuruSudahKoreksiActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ListView listView;
-    private String getTerkirim= Server.URL_API + "get_jawaban_dikoreksi_group.php";
+    private String getTerkirim= Server.URL_API + "koreksi/get_jawaban_dikoreksi_group.php";
     AdapterKoreksiGroup adapterKoreksiGroup;
     public static ArrayList<KoreksiGroupModels> koreksiGroupModelsArrayListk = new ArrayList<>();
     KoreksiGroupModels koreksiGroupModels;

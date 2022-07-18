@@ -43,7 +43,7 @@ public class SiswaTugasSelesai extends AppCompatActivity {
     SimpleDateFormat sdfTime = new SimpleDateFormat(times);
     String myFormat = "yyyy-MM-dd";
     SimpleDateFormat sdfDate = new SimpleDateFormat(myFormat);
-    private String InsertAPI = Server.URL_API + "insert_jawaban.php";
+    private String InsertAPI = Server.URL_API + "tugas/insert_jawaban.php";
     CardView cdSubmit;
 //    String usertoken;
 

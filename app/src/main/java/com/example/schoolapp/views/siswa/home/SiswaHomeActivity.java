@@ -37,8 +37,11 @@ import com.example.schoolapp.helper.Server;
 import com.example.schoolapp.helper.SessionManager;
 import com.example.schoolapp.models.siswa.BiodataModels;
 import com.example.schoolapp.models.siswa.InformationModels;
+import com.example.schoolapp.views.admin.informasi.AddInformasiGuru;
+import com.example.schoolapp.views.admin.informasi.GuruInformasiActivity;
 import com.example.schoolapp.views.auth.AuthLoginActivity;
 import com.example.schoolapp.views.siswa.aktivitas.SiswaTugasActivity;
+import com.example.schoolapp.views.siswa.aktivitas.extend.SiswaTugasSelesai;
 import com.example.schoolapp.views.siswa.history.SiswaHistoryActivity;
 import com.example.schoolapp.views.siswa.home.extend.SiswaDetailInformasi;
 import com.example.schoolapp.views.siswa.home.extend.SiswaProfileActivity;
@@ -66,13 +69,17 @@ public class SiswaHomeActivity extends AppCompatActivity {
     String times = "HH:mm";
     SimpleDateFormat sdfTime = new SimpleDateFormat(time);
     SimpleDateFormat sdfTimes = new SimpleDateFormat(times);
+    String myFormat = "yyyy-MM-dd";
+    SimpleDateFormat sdfDate = new SimpleDateFormat(myFormat);
+    String tanggal = "";
     private TextView tvGreet, tvName, tvjam;
     String timeGone, getNis, getNama, Absensi;
     Dialog dialog;
     private ImageView imgprofile, imgDialog,closeD;
-    private String getData = Server.URL_API + "get_informasi.php";
-    private String getBio = Server.URL_API + "get_biodata.php";
-    private String absen = Server.URL_API + "absen_siswa.php";
+    private String getData = Server.URL_API + "informasi/get_informasi.php";
+    private String getBio = Server.URL_API + "auth/get_biodata.php";
+    private String absen = Server.URL_API + "auth/absen_siswa.php";
+    private String store = Server.URL_API + "insert_absensi.php";
     AdapterListInformasi adapterListInformasi;
     public static ArrayList<InformationModels> informationModelsArrayList = new ArrayList<>();
     InformationModels informationModels;
@@ -102,13 +109,12 @@ public class SiswaHomeActivity extends AppCompatActivity {
 //
         adapterListInformasi = new AdapterListInformasi(SiswaHomeActivity.this, informationModelsArrayList);
         listInformasi.setAdapter(adapterListInformasi);
-//        receiveData();
 
         imgprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
-                String tgl = biodataModels.getTgl_lahir().toString();
+                String tgl = biodataModels.getTanggal().toString();
                 String agama = biodataModels.getAgama().toString();
                 String kelamin = biodataModels.getKelamin().toString();
 
@@ -121,7 +127,7 @@ public class SiswaHomeActivity extends AppCompatActivity {
         cdAbsen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AbsenSiswa();
+                storeAbsen();
             }
         });
 
@@ -135,6 +141,8 @@ public class SiswaHomeActivity extends AppCompatActivity {
         Calendar c1 = Calendar.getInstance();
         String str1 = sdfTime.format(c1.getTime());
         String str2 = sdfTimes.format(c1.getTime());
+        String str3 = sdfDate.format(c1.getTime());
+        tanggal = str3;
         tvjam.setText(str2);
         timeGone = str1;
         greeting();
@@ -212,8 +220,10 @@ public class SiswaHomeActivity extends AppCompatActivity {
         getNis = user.get(SessionManager.NIS);
         getNama = user.get(SessionManager.NAME);
         tvName.setText(getNama);
-
+//
         receiveData();
+        getBiodata();
+//        AbsenSiswa();
 
 
         dialog = new Dialog(SiswaHomeActivity.this);
@@ -272,12 +282,6 @@ public class SiswaHomeActivity extends AppCompatActivity {
         super.onPause();
         Log.i(TAG, "OnPause");
     }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        Log.i(TAG, "OnStop");
-//    }
 
     @Override
     protected void onDestroy() {
@@ -312,11 +316,7 @@ public class SiswaHomeActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    protected void onResume() {
-//        receiveData();
-//        super.onResume();
-//    }
+
 
     private void logout() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -352,13 +352,13 @@ public class SiswaHomeActivity extends AppCompatActivity {
                                     String penting = object.getString("penting");
                                     String created = object.getString("created");
                                     String tanggal = object.getString("tanggal");
+                                    String status = object.getString("status");
 
                                     if (jsonArray.length() < 1) {
                                         progressBar.setVisibility(View.GONE);
                                         Toast.makeText(SiswaHomeActivity.this, "Belum Ada Data!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        getBiodata();
-                                        informationModels = new InformationModels(id, judul, ucapan, isi, penutup, penting, created, tanggal);
+                                        informationModels = new InformationModels(id, judul, ucapan, isi, penutup, penting, created, tanggal,status);
                                         informationModelsArrayList.add(informationModels);
                                         adapterListInformasi.notifyDataSetChanged();
                                         progressBar.setVisibility(View.GONE);
@@ -411,10 +411,13 @@ public class SiswaHomeActivity extends AppCompatActivity {
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
+                                    String nis = object.getString("nis");
+                                    String nama = object.getString("nama");
+                                    String username = object.getString("username");
                                     String kelas = object.getString("kelas");
                                     String agama = object.getString("agama");
                                     String kelamin = object.getString("kelamin");
-                                    String tgl_lahir = object.getString("tgl_lahir");
+                                    String tanggal = object.getString("tanggal");
                                     String alamat = object.getString("alamat");
                                     String telp = object.getString("telp");
                                     String foto = object.getString("foto");
@@ -423,7 +426,7 @@ public class SiswaHomeActivity extends AppCompatActivity {
                                     if (jsonArray.length() < 1) {
                                         Toast.makeText(SiswaHomeActivity.this, "Terjadi Kesalahan!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        biodataModels = new BiodataModels(kelas, agama, kelamin, tgl_lahir, alamat, telp, foto, absen);
+                                        biodataModels = new BiodataModels(nis, nama, username, kelas, agama, kelamin, tanggal, alamat, telp, foto, absen);
                                         biodataModelsArrayList.add(biodataModels);
                                         Absensi = absen;
 //                                        Toast.makeText(SiswaHomeActivity.this, "Absen = "+Absensi, Toast.LENGTH_SHORT).show();
@@ -468,25 +471,19 @@ public class SiswaHomeActivity extends AppCompatActivity {
 
     public void AbsenSiswa() {
         final String nis = getNis;
-        final ProgressDialog progressDialog = new ProgressDialog(SiswaHomeActivity.this);
-        progressDialog.setMessage("Proses Absen ...");
-        progressDialog.show();
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, absen,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
 
                             if (success.equals("1")){
-                                Toast.makeText(SiswaHomeActivity.this, "Berhasil Absent..", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SiswaHomeActivity.this, "Success...", Toast.LENGTH_SHORT).show();
                                 getBiodata();
                             }
                         } catch (JSONException e) {
-                            progressDialog.dismiss();
                             Toast.makeText(SiswaHomeActivity.this, "Internet Terputus ...", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -495,7 +492,6 @@ public class SiswaHomeActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         System.out.println(error.toString());
-                        progressDialog.dismiss();
                         Toast.makeText(SiswaHomeActivity.this, "Error Server", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -511,6 +507,52 @@ public class SiswaHomeActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
+
+    private void storeAbsen() {
+        final String nis = getNis;
+        final String tgl = tanggal;
+        final String jam = tvjam.getText().toString();
+
+        final ProgressDialog progressDialog = new ProgressDialog(SiswaHomeActivity.this);
+        progressDialog.setMessage("Menyimpan . . .");
+        progressDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, store,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("success")) {
+                            progressDialog.dismiss();
+//                            Toast.makeText(SiswaHomeActivity.this, "Wait...", Toast.LENGTH_SHORT).show();
+                            AbsenSiswa();
+//                            getBiodata();
+                        } else {
+                            Toast.makeText(SiswaHomeActivity.this, "Gagal, Coba Kembali!", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(SiswaHomeActivity.this, "Error Connection", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("nis", nis);
+                params.put("tanggal", tgl);
+                params.put("jam", jam);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(SiswaHomeActivity.this);
+        requestQueue.add(request);
+    }
+
 
 
     @Override

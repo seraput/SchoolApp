@@ -2,13 +2,13 @@ package com.example.schoolapp.models.siswa;
 
 public class InformationModels {
 
-    private String id, judul, ucapan, isi, penutup, penting, created, tanggal;
+    private String id, judul, ucapan, isi, penutup, penting, created, tanggal, status;
 
     public InformationModels(){
 
     }
 
-    public InformationModels(String id, String judul, String ucapan, String isi, String penutup, String penting, String created, String tanggal) {
+    public InformationModels(String id, String judul, String ucapan, String isi, String penutup, String penting, String created, String tanggal, String status) {
         this.id = id;
         this.judul = judul;
         this.ucapan = ucapan;
@@ -17,6 +17,7 @@ public class InformationModels {
         this.penting = penting;
         this.created = created;
         this.tanggal = tanggal;
+        this.status = status;
     }
 
     public String getId() {
@@ -81,5 +82,13 @@ public class InformationModels {
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

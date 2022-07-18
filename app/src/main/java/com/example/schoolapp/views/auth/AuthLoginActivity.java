@@ -62,9 +62,9 @@ public class AuthLoginActivity extends AppCompatActivity {
     LinearLayout lupaPass;
     SharedPreferences sharedPreferences;
     SessionManager sessionManager;
-    private String LoginAPI = Server.URL_API + "login.php";
-    private String InsertAPI = Server.URL_API + "insert_token.php";
-    private String UpdateData = Server.URL_API + "aktivasi.php";
+    private String LoginAPI = Server.URL_API + "auth/login.php";
+    private String InsertAPI = Server.URL_API + "auth/insert_token.php";
+    private String UpdateData = Server.URL_API + "auth/aktivasi.php";
     Dialog dialog, dialog2;
     String usertoken;
     EditText etNisn, etToken;

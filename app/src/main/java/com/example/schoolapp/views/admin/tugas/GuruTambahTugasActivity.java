@@ -57,12 +57,12 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
     SessionManager sessionManager;
     String myFormat = "yyyy-MM-dd";
     SimpleDateFormat sdfDate = new SimpleDateFormat(myFormat);
-    private String InsertSoal = Server.URL_API + "insert_pertanyaan.php";
-    private String InsertTugas = Server.URL_API + "insert_tugas.php";
-    private String getNumber = Server.URL_API + "autonumber.php";
+    private String InsertSoal = Server.URL_API + "tugas/insert_pertanyaan.php";
+    private String InsertTugas = Server.URL_API + "tugas/insert_tugas.php";
+    private String getNumber = Server.URL_API + "tugas/autonumber.php";
     String guruID, guruNama;
-    private String getSoal = Server.URL_API + "get_soal.php";
-    private String HapusInfo = Server.URL_API + "delete_soal.php";
+    private String getSoal = Server.URL_API + "tugas/get_soal.php";
+    private String HapusInfo = Server.URL_API + "tugas/delete_soal.php";
     AdapterListSoal adapterListSoal;
     public static ArrayList<SoalModels> soalModelsArrayList = new ArrayList<>();
     SoalModels soalModels;

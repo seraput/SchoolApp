@@ -1,19 +1,15 @@
 package com.example.schoolapp.adapter.admin;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.schoolapp.R;
 import com.example.schoolapp.models.siswa.TerkirimModels;
-
 import java.util.List;
 
 public class AdapterListTerkirimGuru extends ArrayAdapter<TerkirimModels> {

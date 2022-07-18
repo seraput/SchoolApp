@@ -57,7 +57,7 @@ public class SiswaHistoryTerkirimFragment extends Fragment {
     SharedPreferences sharedPreferences;
     String getNis;
     ProgressBar progressBar;
-    private String getTerkirim = Server.URL_API + "get_jawaban_terkirim.php";
+    private String getTerkirim = Server.URL_API + "koreksi/get_jawaban_terkirim.php";
 
     public SiswaHistoryTerkirimFragment() {
         // Required empty public constructor

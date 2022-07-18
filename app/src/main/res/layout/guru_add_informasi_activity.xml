@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.admin.informasi.AddInformasiGuru">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue"
+        android:id="@+id/top">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Informasi"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/top">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Informasi"
+            android:textSize="16dp"
+            android:textColor="#757474"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="normal"
+            android:hint="Judul"
+            android:id="@+id/judul"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="normal"
+            android:hint="Ucapan Example : Selamat Pagi"
+            android:inputType="textCapWords"
+            android:id="@+id/ucapan"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="normal"
+            android:hint="Isi Body"
+            android:inputType="textCapWords"
+            android:id="@+id/isi"
+            android:maxLines="5"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="normal"
+            android:hint="Penutup Example : Sekian Terimakasih."
+            android:inputType="textCapWords"
+            android:id="@+id/penutup"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:met_floatingLabel="normal"
+            android:hint="Peringatan Example : Batas Tanggal"
+            android:id="@+id/penting"
+            android:inputType="textCapWords"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="highlight"
+                android:hint="Tanggal Expired"
+                android:enabled="false"
+                android:id="@+id/tgl_expired"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_date_blue"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:id="@+id/img_select"
+                android:layout_marginRight="10dp"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/info_simpan"/>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

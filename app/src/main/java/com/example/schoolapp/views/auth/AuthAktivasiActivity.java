@@ -57,9 +57,9 @@ public class AuthAktivasiActivity extends AppCompatActivity {
     String usertoken;
     EditText genToken;
     Dialog dialog;
-    private String GETDATA = Server.URL_API + "get_user.php";
-    private String InsertAPI = Server.URL_API + "insert_token.php";
-    private String UpdateData = Server.URL_API + "aktivasi.php";
+    private String GETDATA = Server.URL_API + "auth/get_user.php";
+    private String InsertAPI = Server.URL_API + "auth/insert_token.php";
+    private String UpdateData = Server.URL_API + "auth/aktivasi.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
