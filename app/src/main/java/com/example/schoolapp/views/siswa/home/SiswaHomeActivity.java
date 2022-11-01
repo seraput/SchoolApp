@@ -117,10 +117,14 @@ public class SiswaHomeActivity extends AppCompatActivity {
                 String tgl = biodataModels.getTanggal().toString();
                 String agama = biodataModels.getAgama().toString();
                 String kelamin = biodataModels.getKelamin().toString();
+                String nisn = biodataModels.getNis().toString();
+                String nama = biodataModels.getNama().toString();
 
                 tvDtgl.setText(tgl);
                 tvDagama.setText(agama);
                 tvDkelamin.setText(kelamin);
+                tvDnis.setText(nisn);
+                tvDnama.setText(nama);
             }
         });
 

@@ -18,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.schoolapp.R;
 import com.example.schoolapp.helper.Server;
+import com.example.schoolapp.views.admin.GuruHomeActivity;
 import com.example.schoolapp.views.admin.informasi.GuruInformasiActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -41,7 +42,6 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
 
         btSimpan = findViewById(R.id.btSimpan);
         btUbah = findViewById(R.id.btEdit);
-        btBatal = findViewById(R.id.btCancel);
 
         btSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,9 +93,6 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
         mtTelp.setText(GuruDataSiswaActivity.dataSiswaModelsArrayList.get(position).getTelp());
     }
 
-    public void back(View view) {
-        startActivity(new Intent(GuruDataSiswaDetail.this, GuruDataSiswaActivity.class));
-    }
 
     private void disable(){
         mtNama.setEnabled(false);
@@ -161,5 +158,14 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(GuruDataSiswaDetail.this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruDataSiswaDetail.this, GuruDataSiswaActivity.class));
+    }
+
+    public void back1(View view) {
+        startActivity(new Intent(GuruDataSiswaDetail.this, GuruDataSiswaActivity.class));
     }
 }

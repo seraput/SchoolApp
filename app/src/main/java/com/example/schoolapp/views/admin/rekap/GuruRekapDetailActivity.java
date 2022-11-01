@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.schoolapp.R;
 import com.example.schoolapp.helper.Server;
 import com.example.schoolapp.models.admin.DataRekapModels;
+import com.example.schoolapp.views.admin.GuruHomeActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONArray;
@@ -185,5 +186,11 @@ public class GuruRekapDetailActivity extends AppCompatActivity {
     }
 
     public void back(View view) {
+        startActivity(new Intent(GuruRekapDetailActivity.this, GuruRekapActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruRekapDetailActivity.this, GuruRekapActivity.class));
     }
 }

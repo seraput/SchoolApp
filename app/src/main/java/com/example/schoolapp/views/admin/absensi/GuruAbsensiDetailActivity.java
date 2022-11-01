@@ -23,6 +23,7 @@ import com.example.schoolapp.adapter.admin.AdapterAbsensiGroup;
 import com.example.schoolapp.helper.Server;
 import com.example.schoolapp.models.admin.AbsensiDetailModels;
 import com.example.schoolapp.models.admin.AbsensiGroupModels;
+import com.example.schoolapp.views.admin.GuruHomeActivity;
 import com.example.schoolapp.views.admin.datasiswa.GuruDataSiswaActivity;
 
 import org.json.JSONArray;
@@ -126,5 +127,11 @@ public class GuruAbsensiDetailActivity extends AppCompatActivity {
     }
 
     public void back(View view) {
+        startActivity(new Intent(GuruAbsensiDetailActivity.this, GuruAbsensiActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GuruAbsensiDetailActivity.this, GuruAbsensiActivity.class));
     }
 }

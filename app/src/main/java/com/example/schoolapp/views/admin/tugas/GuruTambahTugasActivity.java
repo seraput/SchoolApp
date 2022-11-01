@@ -1,5 +1,7 @@
 package com.example.schoolapp.views.admin.tugas;
 
+import static com.gun0912.tedpermission.TedPermission.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.app.DatePickerDialog;
@@ -10,6 +12,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -59,6 +62,7 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
     SimpleDateFormat sdfDate = new SimpleDateFormat(myFormat);
     private String InsertSoal = Server.URL_API + "tugas/insert_pertanyaan.php";
     private String InsertTugas = Server.URL_API + "tugas/insert_tugas.php";
+    private String CallNotif = Server.URL_API + "notification/notification.php";
     private String getNumber = Server.URL_API + "tugas/autonumber.php";
     String guruID, guruNama;
     private String getSoal = Server.URL_API + "tugas/get_soal.php";
@@ -80,6 +84,8 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
     Spinner spnMapel;
     LinearLayout linearSpn;
     int hitung = 0;
+    private RequestQueue mRequestQueue;
+    private StringRequest mStringRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -398,6 +404,7 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("success")) {
                             AutoNumber();
+                            CallNotification();
                             progressDialog.dismiss();
                             Toast.makeText(GuruTambahTugasActivity.this, "Tersimpan!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(GuruTambahTugasActivity.this, GuruTugasActivity.class));
@@ -432,6 +439,26 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    public void CallNotification(){
+            // RequestQueue initialized
+            mRequestQueue = Volley.newRequestQueue(this);
+
+            // String Request initialized
+            mStringRequest = new StringRequest(Request.Method.GET, CallNotif, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    Toast.makeText(getApplicationContext(), "Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i(TAG, "Error :" + error.toString());
+                }
+            });
+
+            mRequestQueue.add(mStringRequest);
+        }
 
 
     public void getData(){
