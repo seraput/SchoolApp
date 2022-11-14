@@ -2,11 +2,16 @@ package com.example.schoolapp.views.admin.datasiswa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,20 +25,29 @@ import com.example.schoolapp.R;
 import com.example.schoolapp.helper.Server;
 import com.example.schoolapp.views.admin.GuruHomeActivity;
 import com.example.schoolapp.views.admin.informasi.GuruInformasiActivity;
+import com.example.schoolapp.views.admin.tugas.GuruTambahTugasActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GuruDataSiswaDetail extends AppCompatActivity {
 
     MaterialEditText mtUsername, mtNama, mtNis, mtKelas, mtAgama, mtKelamin, mtTanggal, mtTelp;
-    Button btSimpan, btUbah, btBatal;
+    Button btSimpan, btUbah;
     int position;
+    Spinner spinKelamin, spinAgama;
     private String putData = Server.URL_API + "siswa/edit_siswa.php";
+
+    String myFormat1 = "yyyy-MM-dd";
+    SimpleDateFormat sdf1 = new SimpleDateFormat(myFormat1);
+    Calendar myCalendar;
+    ImageView imgDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +57,69 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
         btSimpan = findViewById(R.id.btSimpan);
         btUbah = findViewById(R.id.btEdit);
 
+        mtUsername = findViewById(R.id.username);
+        mtNama = findViewById(R.id.namalengkap);
+        mtNis = findViewById(R.id.nis);
+        mtKelas = findViewById(R.id.kelas);
+        mtAgama = findViewById(R.id.agama);
+        mtKelamin = findViewById(R.id.kelamin);
+        mtTanggal = findViewById(R.id.tanggal);
+        mtTelp = findViewById(R.id.notlp);
+
+        spinKelamin = findViewById(R.id.spin_kelamin);
+        spinAgama = findViewById(R.id.spin_agama);
+
+        imgDate = findViewById(R.id.img_select);
+        myCalendar = Calendar.getInstance();
+
+        imgDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(GuruDataSiswaDetail.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, month);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        mtTanggal.setText(sdf1.format(myCalendar.getTime()));
+                    }
+                },
+                        myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+
+        spinKelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String txtKelamin = adapterView.getItemAtPosition(i).toString();
+                mtKelamin.setText(txtKelamin);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinAgama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String txtAgama = adapterView.getItemAtPosition(i).toString();
+                mtAgama.setText(txtAgama);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         btSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 disable();
-                btBatal.setVisibility(View.GONE);
                 btSimpan.setVisibility(View.GONE);
                 btUbah.setVisibility(View.VISIBLE);
             }
@@ -57,27 +129,12 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 enable();//enabled fun
-                btBatal.setVisibility(View.VISIBLE);
                 btSimpan.setVisibility(View.VISIBLE);
                 btUbah.setVisibility(View.GONE);
             }
         });
 
-        btBatal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GuruDataSiswaDetail.this, GuruDataSiswaActivity.class));
-            }
-        });
 
-        mtUsername = findViewById(R.id.username);
-        mtNama = findViewById(R.id.namalengkap);
-        mtNis = findViewById(R.id.nis);
-        mtKelas = findViewById(R.id.kelas);
-        mtAgama = findViewById(R.id.agama);
-        mtKelamin = findViewById(R.id.kelamin);
-        mtTanggal = findViewById(R.id.tanggal);
-        mtTelp = findViewById(R.id.notlp);
 
         disable();//disable fun
 
@@ -103,17 +160,20 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
         mtTelp.setEnabled(false);
         mtNis.setEnabled(false);
         mtAgama.setEnabled(false);
+        spinAgama.setVisibility(View.GONE);
+        spinKelamin.setVisibility(View.GONE);
+        imgDate.setVisibility(View.GONE);
     }
 
     private void enable(){
         mtNama.setEnabled(true);
         mtUsername.setEnabled(false);
         mtKelas.setEnabled(false);
-        mtTanggal.setEnabled(true);
-        mtKelamin.setEnabled(true);
         mtTelp.setEnabled(true);
         mtNis.setEnabled(false);
-        mtAgama.setEnabled(true);
+        spinAgama.setVisibility(View.VISIBLE);
+        spinKelamin.setVisibility(View.VISIBLE);
+        imgDate.setVisibility(View.VISIBLE);
     }
 
     private void put(){

@@ -12,6 +12,23 @@
         <item>PKN</item>
         <item>IPS</item>
     </string-array>
+
+    <string-array name="kelamin">
+        <item>Pilih</item>
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
+
+    <string-array name="agama">
+        <item>Pilih</item>
+        <item>Islam</item>
+        <item>Kristen Protestan</item>
+        <item>Kristen Katolik</item>
+        <item>Hindu</item>
+        <item>Buddha</item>
+        <item>Konghucu</item>
+    </string-array>
+
     <string name="contoh">Jumlah kasus infeksi virus corona di Indonesia kian meningkat. Bertambahnya jumlah kasus ini membuat angka infeksi Covid-19 di Indonesia menembus angka 1 juta. Sudah seharusnya kita lebih patuh terhadap protokol kesehatan yang telah ditentukan Pemerintah Indonesia. Protokol kesehatan ini ditujukan untuk mencegah penularan virus corona dan meminimalisir bertambahnya angka kasus infeksi</string>
     <string name="title_activity_guru_tambah_informasi">GuruTambahInformasi</string>
     <!-- Strings used for fragments for navigation -->

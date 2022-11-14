@@ -87,29 +87,80 @@
                     android:id="@+id/kelas"
                     android:layout_margin="10dp"/>
 
-                <com.rengwuxian.materialedittext.MaterialEditText
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:met_floatingLabel="normal"
-                    android:hint="Tanggal Lahir"
-                    android:id="@+id/tanggal"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:met_floatingLabel="normal"
-                    android:hint="Agama"
-                    android:id="@+id/agama"
-                    android:layout_margin="10dp"/>
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="highlight"
+                        android:hint="Tanggal Lahir"
+                        android:enabled="false"
+                        android:id="@+id/tanggal"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10dp"/>
 
-                <com.rengwuxian.materialedittext.MaterialEditText
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_date_blue"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:id="@+id/img_select"
+                        android:visibility="gone"
+                        android:layout_marginRight="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:met_floatingLabel="normal"
-                    android:hint="Kelamin"
-                    android:id="@+id/kelamin"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:id="@+id/linear_spn"
+                    android:orientation="horizontal">
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="normal"
+                        android:hint="Agama"
+                        android:id="@+id/agama"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:visibility="gone"
+                        android:entries="@array/agama"
+                        android:id="@+id/spin_agama"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:met_floatingLabel="normal"
+                        android:hint="Kelamin"
+                        android:layout_weight="1"
+                        android:id="@+id/kelamin"/>
+
+                    <Spinner
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:visibility="gone"
+                        android:id="@+id/spin_kelamin"
+                        android:entries="@array/kelamin"/>
+
+                </LinearLayout>
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:layout_width="match_parent"
