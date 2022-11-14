@@ -61,13 +61,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bgTop"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="10dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                android:hint="Nis"
+                android:id="@+id/nis"
+                android:layout_margin="10dp"/>
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
@@ -85,60 +94,100 @@
                 android:id="@+id/namalengkap"
                 android:layout_margin="10dp"/>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_floatingLabel="normal"
-                android:hint="Nis"
-                android:id="@+id/nis"
-                android:layout_margin="10dp"/>
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_floatingLabel="normal"
-                android:hint="Kelas"
-                android:id="@+id/kelas"
-                android:layout_margin="10dp"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:id="@+id/linear_spn_2"
+                android:orientation="horizontal">
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:met_floatingLabel="normal"
-                    android:hint="Tanggal Lahir"
-                    android:layout_weight="1"
-                    android:id="@+id/tanggal"/>
+                    android:hint="Kelas"
+                    android:id="@+id/kelas"
+                    android:layout_weight="1"/>
 
-                <ImageView
-                    android:id="@+id/date"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_date_blue"
-                    android:layout_gravity="center_vertical"/>
+                <Spinner
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:entries="@array/kelas"
+                    android:id="@+id/spinkelas"/>
 
             </LinearLayout>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:met_floatingLabel="normal"
-                android:hint="Agama"
-                android:id="@+id/agama"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="highlight"
+                    android:hint="Tanggal Lahir"
+                    android:enabled="false"
+                    android:id="@+id/tanggal"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_date_blue"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:id="@+id/img_select"
+                    android:layout_marginRight="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:met_floatingLabel="normal"
-                android:hint="Kelamin"
-                android:id="@+id/kelamin"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:id="@+id/linear_spn"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="Agama"
+                    android:id="@+id/agama"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:entries="@array/agama"
+                    android:id="@+id/spinagama"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="Kelamin"
+                    android:layout_weight="1"
+                    android:id="@+id/kelamin"/>
+
+                <Spinner
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/spinkelamin"
+                    android:entries="@array/kelamin"/>
+
+            </LinearLayout>
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
@@ -147,6 +196,29 @@
                 android:hint="No Telp"
                 android:id="@+id/notlp"
                 android:layout_margin="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/linear_spn_3"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:met_floatingLabel="normal"
+                    android:hint="User Level"
+                    android:id="@+id/level"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:entries="@array/level"
+                    android:id="@+id/spinlevel"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

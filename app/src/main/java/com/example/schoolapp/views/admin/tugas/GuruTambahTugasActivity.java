@@ -62,7 +62,7 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
     SimpleDateFormat sdfDate = new SimpleDateFormat(myFormat);
     private String InsertSoal = Server.URL_API + "tugas/insert_pertanyaan.php";
     private String InsertTugas = Server.URL_API + "tugas/insert_tugas.php";
-    private String CallNotif = Server.URL_API + "notification/notification.php";
+    private String CallNotif = Server.URL_API_I + "notification/notification.php";
     private String getNumber = Server.URL_API + "tugas/autonumber.php";
     String guruID, guruNama;
     private String getSoal = Server.URL_API + "tugas/get_soal.php";
@@ -139,6 +139,8 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
         //Select Tanggal
         myCalendar = Calendar.getInstance();
 
+        AutoNumber();
+
         imgSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +168,6 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
         adapterListSoal = new AdapterListSoal(getApplicationContext(), soalModelsArrayList);
         listSoal.setAdapter(adapterListSoal);
 
-        AutoNumber();
 
         imgSaved.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,6 +261,7 @@ public class GuruTambahTugasActivity extends AppCompatActivity {
         int position = 0;
 //        txtid.setText(autoNumberArrayList.get(position).getId());
         number = autoNumberArrayList.get(position).getId();
+
 //        Toast.makeText(this, "ID: "+ number.toString(), Toast.LENGTH_SHORT).show();
         meID.setText(number);
         getData();

@@ -19,6 +19,22 @@
         <item>Wanita</item>
     </string-array>
 
+    <string-array name="level">
+        <item>Pilih</item>
+        <item>siswa</item>
+        <item>admin</item>
+    </string-array>
+
+    <string-array name="kelas">
+        <item>Pilih</item>
+        <item>6A</item>
+        <item>6B</item>
+        <item>5A</item>
+        <item>5B</item>
+        <item>4A</item>
+        <item>4B</item>
+    </string-array>
+
     <string-array name="agama">
         <item>Pilih</item>
         <item>Islam</item>

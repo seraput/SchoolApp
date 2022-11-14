@@ -39,7 +39,7 @@ import java.util.Map;
 public class GuruDataSiswaDetail extends AppCompatActivity {
 
     MaterialEditText mtUsername, mtNama, mtNis, mtKelas, mtAgama, mtKelamin, mtTanggal, mtTelp;
-    Button btSimpan, btUbah;
+//    Button btSimpan, btUbah;
     int position;
     Spinner spinKelamin, spinAgama;
     private String putData = Server.URL_API + "siswa/edit_siswa.php";
@@ -47,15 +47,15 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
     String myFormat1 = "yyyy-MM-dd";
     SimpleDateFormat sdf1 = new SimpleDateFormat(myFormat1);
     Calendar myCalendar;
-    ImageView imgDate;
+    ImageView imgDate, imgSaved, imgEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guru_data_siswa_detail_activity);
 
-        btSimpan = findViewById(R.id.btSimpan);
-        btUbah = findViewById(R.id.btEdit);
+        imgSaved = findViewById(R.id.saved);
+        imgEdit = findViewById(R.id.updated);
 
         mtUsername = findViewById(R.id.username);
         mtNama = findViewById(R.id.namalengkap);
@@ -116,21 +116,36 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
             }
         });
 
-        btSimpan.setOnClickListener(new View.OnClickListener() {
+        imgSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                disable();
-                btSimpan.setVisibility(View.GONE);
-                btUbah.setVisibility(View.VISIBLE);
+                String username = mtUsername.getText().toString();
+                String nama = mtNama.getText().toString();
+                String nis = mtNis.getText().toString();
+                String kelas = mtKelas.getText().toString();
+                String tanggal = mtTanggal.getText().toString();
+                String agama = mtAgama.getText().toString();
+                String kelamin = mtKelamin.getText().toString();
+                String telp = mtTelp.getText().toString();
+
+                if (username.isEmpty() || nama.isEmpty() || nis.isEmpty() || kelas.isEmpty() ||
+                        tanggal.equals("-") || agama.equals("Pilih") || kelamin.equals("Pilih") || telp.equals("-"))
+                {
+                    Toast.makeText(GuruDataSiswaDetail.this, "Item harus terisi lengkap!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    put();
+                }
             }
         });
 
-        btUbah.setOnClickListener(new View.OnClickListener() {
+        imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 enable();//enabled fun
-                btSimpan.setVisibility(View.VISIBLE);
-                btUbah.setVisibility(View.GONE);
+                imgSaved.setVisibility(View.VISIBLE);
+                imgEdit.setVisibility(View.GONE);
             }
         });
 
@@ -149,7 +164,6 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
         mtAgama.setText(GuruDataSiswaActivity.dataSiswaModelsArrayList.get(position).getAgama());
         mtTelp.setText(GuruDataSiswaActivity.dataSiswaModelsArrayList.get(position).getTelp());
     }
-
 
     private void disable(){
         mtNama.setEnabled(false);
@@ -177,7 +191,11 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
     }
 
     private void put(){
-        final String nis = mtNis.getText().toString();
+        String nis = mtNis.getText().toString();
+        String tanggal = mtTanggal.getText().toString();
+        String agama = mtAgama.getText().toString();
+        String kelamin = mtKelamin.getText().toString();
+        String telp = mtTelp.getText().toString();
         final ProgressDialog progressDialog = new ProgressDialog(GuruDataSiswaDetail.this);
         progressDialog.setMessage("Tunggu Sebentar...");
         progressDialog.show();
@@ -193,6 +211,9 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
 
                             if (success.equals("1")){
                                 Toast.makeText(GuruDataSiswaDetail.this, "Berhasil..", Toast.LENGTH_SHORT).show();
+                                disable();
+                                imgSaved.setVisibility(View.GONE);
+                                imgEdit.setVisibility(View.VISIBLE);
                             }
                         } catch (JSONException e) {
                             progressDialog.dismiss();
@@ -213,6 +234,10 @@ public class GuruDataSiswaDetail extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("nis", nis);
+                params.put("agama", agama);
+                params.put("kelamin", kelamin);
+                params.put("tanggal", tanggal);
+                params.put("telp", telp);
                 return params;
             }
         };
